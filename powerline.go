@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"strings"
 
+	"os"
+	"strconv"
+
 	"github.com/mattn/go-runewidth"
 	"golang.org/x/crypto/ssh/terminal"
 	"golang.org/x/text/width"
-	"os"
-	"strconv"
 )
 
 type ShellInfo struct {
@@ -167,15 +168,12 @@ func (p *powerline) draw() string {
 
 		buffer.WriteString(p.fgColor(segment.foreground))
 		buffer.WriteString(p.bgColor(segment.background))
-		buffer.WriteRune(' ')
 		buffer.WriteString(segment.content)
-		buffer.WriteRune(' ')
 		buffer.WriteString(separatorBackground)
 		buffer.WriteString(p.fgColor(segment.separatorForeground))
 		buffer.WriteString(segment.separator)
 		buffer.WriteString(p.reset)
 	}
-	buffer.WriteRune(' ')
 
 	drawnResult := buffer.String()
 	if *p.args.EastAsianWidth {
@@ -214,7 +212,6 @@ func (p *powerline) draw() string {
 		nextLineBuffer.WriteString(p.fgColor(background))
 		nextLineBuffer.WriteString(p.symbolTemplates.Separator)
 		nextLineBuffer.WriteString(p.reset)
-		nextLineBuffer.WriteRune(' ')
 
 		drawnResult += nextLineBuffer.String()
 	}

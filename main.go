@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/mattn/go-runewidth"
 	"io/ioutil"
 	"os"
 	"strings"
+
+	"github.com/mattn/go-runewidth"
 )
 
 const (
@@ -121,7 +122,7 @@ func main() {
 				"(valid choices: fancy, plain, dironly)")),
 		CwdMaxDepth: flag.Int(
 			"cwd-max-depth",
-			5,
+			1,
 			commentsWithDefaults("Maximum number of directories to show in path")),
 		CwdMaxDirSize: flag.Int(
 			"cwd-max-dir-size",
@@ -146,7 +147,7 @@ func main() {
 				"(valid choices: patched, compatible, flat)")),
 		Theme: flag.String(
 			"theme",
-			"default",
+			"compact",
 			commentsWithDefaults("Set this to the theme you want to use",
 				"(valid choices: default, low-contrast)")),
 		Shell: flag.String(
@@ -156,7 +157,7 @@ func main() {
 				"(valid choices: bare, bash, zsh)")),
 		Modules: flag.String(
 			"modules",
-			"venv,user,host,ssh,cwd,perms,git,hg,jobs,exit,root",
+			"venv,ssh,cwd,perms,git,hg,jobs,exit,root",
 			commentsWithDefaults("The list of modules to load, separated by ','",
 				"(valid choices: aws, cwd, docker, dotenv, exit, git, gitlite, hg, host, jobs, perlbrew, perms, root, ssh, time, user, venv)")),
 		Priority: flag.String(

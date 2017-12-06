@@ -111,10 +111,6 @@ func segmentCwd(p *powerline) {
 				for _, segment := range firstPart {
 					pathSegments = append(pathSegments, segment)
 				}
-				pathSegments = append(pathSegments, pathSegment{
-					path:     ellipsis,
-					ellipsis: true,
-				})
 				pathSegments = append(pathSegments, secondPart...)
 			}
 
